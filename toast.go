@@ -341,6 +341,7 @@ func Duration(name string) (toastDuration, error) {
 }
 
 func invokeTemporaryScript(content string) error {
+	content = "\uFEFF" + content
 	id, _ := uuid.NewV4()
 	file := filepath.Join(os.TempDir(), id.String()+".ps1")
 	defer os.Remove(file)
